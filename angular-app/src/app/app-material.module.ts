@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule } from '@angular/material';
-// MatSidenav, MatSidenavContainer, MatNavList, MatToolbar
 
 @NgModule({
   imports: 
