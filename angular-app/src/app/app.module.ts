@@ -1,3 +1,4 @@
+import { AngularExamplesModule } from './../angular-examples/angular-examples.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +15,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppMaterialModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularExamplesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
