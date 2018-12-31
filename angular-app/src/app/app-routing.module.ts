@@ -1,4 +1,5 @@
-import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+// import { AppComponent } from './app.component';
 // import { AboutComponent } from './../angular-examples/components/about/about.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -6,13 +7,13 @@ import { AngularExamplesModule } from './../angular-examples/angular-examples.mo
 
 const routes: Routes = [
   {
-    path: 'about',
+    path: 'ng',
     loadChildren: './../angular-examples/angular-examples.module#AngularExamplesModule'
   },
   {
     path: '',
     pathMatch: 'full',
-    component: AppComponent
+    component: HomeComponent
   },
   {
     path: '**',

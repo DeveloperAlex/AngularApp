@@ -2,6 +2,17 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+// CSS Reset <START> /////////////////////////////////
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+// CSS Reset <END> ///////////////////////////////////
+
+
+
 /*
 @import "~@angular/material/theming";
 
