@@ -1,4 +1,8 @@
+import { FirestoreService } from './firestore.service';
+import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+import firestore from 'firebase/firestore';
 
 @Component({
   selector: 'app-firestore',
@@ -6,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./firestore.component.scss']
 })
 export class FirestoreComponent implements OnInit {
+  env = environment;
 
-  constructor() { }
+  constructor(public firestoreSvc: FirestoreService) { }
 
   ngOnInit() {
-  }
+    firebase.initializeApp(this.env.firebaseConfig);
+    firebase.firestore().settings({timestampsInSnapshots: true});
+    }
 
 }
