@@ -21,7 +21,7 @@ export class FirestoreService {
   constructor(private db: AngularFirestore) {}
 
   public getTestCollection(): Observable<any> {
-    return this.db.collection('items').valueChanges();
+    return this.db.collection('test-collection-01').valueChanges();
   }
 
 
