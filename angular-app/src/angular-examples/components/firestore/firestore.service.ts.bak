@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-// import * as firebase from 'firebase';
-// import firestore from 'firebase/firestore';
+import * as firebase from 'firebase';
+import firestore from 'firebase/firestore';
 import { environment } from './../../../environments/environment';
 
 @Injectable({
@@ -11,21 +10,30 @@ import { environment } from './../../../environments/environment';
 })
 export class FirestoreService {
   env = environment;
-  // ref = firebase.firestore().collection('test-collection-01');
+  ref = firebase.firestore().collection('test-collection-01');
 
-  // constructor() { 
-  //   // firebase.initializeApp(this.env.firebaseConfig);
-  //   // firebase.firestore().settings({timestampsInSnapshots: true});
-  // }
-
-  constructor(private db: AngularFirestore) {}
+  constructor() { 
+    // firebase.initializeApp(this.env.firebaseConfig);
+    // firebase.firestore().settings({timestampsInSnapshots: true});
+  }
 
   public getTestCollection(): Observable<any> {
-    return this.db.collection('items').valueChanges();
+    return new Observable((observer) => {
+      this.ref.onSnapshot((querySnapshot) => {
+        let collection = [];
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          collection.push({
+            key: doc.id,
+            name: data.name
+          });
+        });
+        observer.next(collection);
+      });
+    });
   }
 
 
-/*
   private getBoards(): Observable<any> {
     return new Observable((observer) => {
       this.ref.onSnapshot((querySnapshot) => {
@@ -83,6 +91,5 @@ export class FirestoreService {
       });
     });
   }
-*/
 
 }
